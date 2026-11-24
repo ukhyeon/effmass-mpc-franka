@@ -1,0 +1,7 @@
+# live_frame_rp5.yml - real_prep5 (2026-11-20): world (camera_pose_rp5.yaml) -> robot base, same format as live_frame.yml:
+#   p_base = Rz(rotation_z_deg)^T (p_world - base_position_world)
+# world axes = base axes (no rotation); base plate on the table top, 0.715 m above the floor (tape) -> floor at base z -0.715.
+# The previous Indy7-layout values (live_frame.yml: Rz 180, base 0.9 m) are not used.
+frame: rp5
+rotation_z_deg: 0.0
+base_position_world: [0.0, 0.0, 0.715]

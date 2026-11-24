@@ -1,0 +1,20 @@
+# real_slowc_acc10.yml - real_prep1 (2026-11-19) low-speed candidate for the first run on the real robot: no robot collision sphere
+# faster than 0.25 m/s. live_t1.yml + acceleration limit 10 rad/s^2 + sphere speed cost of the MPC made global (0.20 m/s, everywhere) + hard limiter on the commanded step.
+# Load with step2b_mpc_isaac.py --profile ~/effmass_mpc/goal1/config/real_slowc_acc10.yml. live_t1.yml is not changed.
+profile: real_slowc_acc10
+date: 2026-11-19
+settings:
+  speed_cap: "on"          # rollout cost on robot sphere speed near the human (t1)
+  speed_cap_v: 0.20        # (real_prep1) m/s, below the hard limit 0.25
+  speed_cap_dist: 10.0     # (real_prep1) m: the speed cost acts everywhere, not only near the human
+  speed_cap_w: 300000.0    # (t1)
+  pose_rot_w: 200.0        # (t1)
+  meff_motion: "cv"        # human shapes moved by segment velocity x (age + rollout time) inside the cost
+  human_vel_alpha: 0.2     # EMA of the segment velocity, per new human message; 0.2 was chosen on synthetic noise, retune on camera data
+  # Tracking loss (ROS path): keep the last human 0.5 s after messages stop, then switch the human cost off until the next message.
+  # This is for the virtual-robot stage only. On the real robot a lost human must stop the robot (or keep it at reduced speed in
+  # a safe state) instead of switching the human cost off.
+  human_loss_hold_s: 0.5
+  human_loss_detect_s: 0.1 # no message for 0.1 s (3 frames at 30 Hz) = lost, logged
+  robot_cfg: "~/effmass_mpc/goal1/fr3v2_1/fr3v2_1_acc10.yml"   # acceleration 10
+  sphere_speed_limit: 0.25  # m/s, hard limit on the commanded step after the solver

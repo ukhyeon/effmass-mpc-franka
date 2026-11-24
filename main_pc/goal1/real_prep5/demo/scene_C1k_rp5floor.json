@@ -1,0 +1,113 @@
+{
+ "path": "corr",
+ "key": "demo_C1k_rp5floor",
+ "scene": "live_corr",
+ "goals_wxyz": [
+  [
+   0.45,
+   -0.55,
+   0.3235,
+   0.0,
+   0.707106781187,
+   -0.707106781187,
+   0.0
+  ],
+  [
+   -0.45,
+   -0.55,
+   0.3235,
+   0.0,
+   0.707106781187,
+   -0.707106781187,
+   0.0
+  ]
+ ],
+ "q_start": [
+  -0.769857,
+  0.608786,
+  -0.147089,
+  -1.477108,
+  0.096081,
+  2.078846,
+  1.418536
+ ],
+ "tcp_A": [
+  0.45,
+  -0.55,
+  0.22010000000000002
+ ],
+ "tcp_B": [
+  -0.45,
+  -0.55,
+  0.22010000000000002
+ ],
+ "dy": [
+  -0.3,
+  0.3
+ ],
+ "symmetric": true,
+ "end_gap": [
+  0.25396972726264955,
+  0.23755928338086368
+ ],
+ "end_margin": [
+  1.1729499574661255,
+  0.8278780090332032
+ ],
+ "line_min_margin": 0.6876130210876465,
+ "plates": [
+  {
+   "name": "floor_rp5",
+   "pose": [
+    0.0,
+    0.0,
+    -0.765,
+    1,
+    0,
+    0,
+    0
+   ],
+   "dims": [
+    4.0,
+    4.0,
+    0.1
+   ]
+  },
+  {
+   "name": "robot_table_real",
+   "pose": [
+    0.0,
+    0.0,
+    -0.3575,
+    1,
+    0,
+    0,
+    0
+   ],
+   "dims": [
+    0.67,
+    0.67,
+    0.715
+   ]
+  },
+  {
+   "name": "keepout_virtual",
+   "pose": [
+    0.0,
+    -0.6675,
+    -0.3325,
+    1,
+    0,
+    0,
+    0
+   ],
+   "dims": [
+    1.6,
+    0.665,
+    0.765
+   ]
+  }
+ ],
+ "note": "demo candidate C1 (2026-11-20 night, real_prep5/demo/make_scenes.py): goals in the base frame, gripper down (orientation of scene_AB_ym_rp5floor.json), q_start = IK at goal 0. 'via' = pass-through goals for rp2 --goal-cycle 1. Plates: floor as ym + robot_table_real (the real robot table as a solid box, see make_scenes.py --table). dy, end_gap, end_margin, line_min_margin copied from ym (not of this path). | C1k (night 2026-11-21): + plate keepout_virtual, a VIRTUAL box (nothing real there) x -0.8..0.8, y -1.0..-0.335 (from the table's person-side face), z -0.715..0.05, so that the MPC does not duck under a hand beside the table (E1: one run came 0.026 m to the table side face); the normal path's lowest sphere is about 0.13 m.",
+ "via": []
+}

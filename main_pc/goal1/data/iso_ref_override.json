@@ -1,0 +1,5 @@
+{
+ "version": "shoulder_1124",
+ "note": "(2026-11-24) ISO reference mass override used only with rp2_mpc_rt.py --human-shoulder 1 (goal1/data/iso_15066.json is not changed). ISO 15066 groups the shoulder with the trunk (40 kg); in the 19-segment human model the shoulder segment starts the arm chain, so the neighbouring upper-arm value (iso_15066.json left/right_upper_arm m_h_iso 3.0 kg) is used.",
+ "m_h_iso": {"left_shoulder": 3.0, "right_shoulder": 3.0}
+}

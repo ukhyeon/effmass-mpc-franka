@@ -1,0 +1,92 @@
+{
+ "head": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "face": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "neck": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "left_shoulder": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "right_shoulder": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "chest": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "abdomen": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "pelvis": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "left_upper_arm": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "right_upper_arm": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "left_lower_arm": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "right_lower_arm": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "left_hand": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "right_hand": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "left_thigh": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "right_thigh": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "left_calf": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ },
+ "right_calf": {
+  "F_max": null,
+  "m_h_iso": null,
+  "k": null
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "version": "v2_shoulder_1124",
+ "base": "goal1/data/shapes_v2.json (21 shapes, unchanged; slots 21-23 inactive)",
+ "note": "(2026-11-24) two shoulder spheres added by rp2_mpc_rt.py --human-shoulder 1 (goal1/scripts/human_shoulder.py) to every human record the MPC reads (live relay and lockstep replay alike), in the empty slots 21 / 22: capsule with p0 = p1 = centre, type 1, segment 10 / 11. The chest capsule (segment 8) still covers the shoulder surface; the spheres only give the shoulder its own segment (and so its eta).",
+ "rule": "centre = the segment centre of mass com[10] / com[11] of the human message (node mass model: vertex average of SMPL part 13 / 14 = collar), i.e. 0.74-0.79 of the way from the SMPL collar joint (13 / 14) to the shoulder joint (16 / 17), 2.8-3.0 cm off that line (rest pose, betas_184059 / 185816). The MPC has no segment rotations, so the centre is the COM itself (no local offset). Radius = shapes_v2 rule on the own vertices of the part (rest pose): r_under = smallest r with under-cover p95 <= 2 cm: L 0.082, R 0.080 (both betas); r_over (over-cover median <= 0.5 cm) L 0.067, R 0.080-0.082; under-cover has priority -> 0.082 both sides (fit: goal1/night1122_s2/shoulder/fit_shoulder.py).",
+ "spheres": [
+  {"name": "left_shoulder", "segment": 10, "slot": 21, "center": "com", "radius": 0.082},
+  {"name": "right_shoulder", "segment": 11, "slot": 22, "center": "com", "radius": 0.082}
+ ]
+}

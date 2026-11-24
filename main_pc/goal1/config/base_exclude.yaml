@@ -1,0 +1,14 @@
+# base_exclude.yaml - baseex (2026-11-24): robot base + cart footprint, no person can be there (goal1/scripts/rp5_base_exclude.py).
+# A person candidate whose PELVIS (root) is inside [x0 - margin, x1 + margin] x [y0 - margin, y1 + margin] is dropped; height not limited.
+# frame: world of goal1/config/camera_pose_rp5.yaml (floor z = 0, origin below the robot base centre, axes = robot base axes; the base
+#   frame has the same x, y), metres.
+# x, y: the robot cart / table, plate robot_table_real of goal1/real_prep5/demo/scene_C1k_rp5floor.json (0.67 x 0.67 m centred on the
+#   base axis, top at the base, z 0 .. 0.715 m). The robot base (FR3 link0, about 0.2 m across) sits on its centre and lies inside.
+#   NOT keepout_virtual of the same scene: that box (x -0.8..0.8, y -1.0..-0.335) is the person-side space in front of the table
+#   (virtual, for the MPC); the seated person's pelvis is at y -0.94 .. -1.2 and would be dropped.
+# Records 11-21 .. 11-23 (all bodies.bin, goal1/real_prep5/baseex/README.md): every robot-as-person body has its pelvis within
+#   |x|, |y| <= 0.243 m; the nearest real person pelvis is at max(|x|, |y|) = 0.591 m; no body between 0.30 and 0.59 m.
+frame: world
+x: [-0.335, 0.335]
+y: [-0.335, 0.335]
+margin: 0.05

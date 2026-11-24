@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>effmass_robot</name>
+  <version>0.1.0</version>
+  <description>goal1 robot effective mass (Pinocchio, FR3 v2.1 collision sphere centers)</description>
+  <maintainer email="169152093+ukhyeon@users.noreply.github.com">ukhyeon</maintainer>
+  <license>Proprietary (lab internal)</license>
+  <exec_depend>pinocchio</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

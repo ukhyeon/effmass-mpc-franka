@@ -1,0 +1,20 @@
+# real_slowc_i3.yml - OVERNIGHT_H1 choice (2026-11-20): real_slowc_acc10.yml (not changed) with MPPI iterations 5 -> 3 (samples 400, horizon 30,
+# speed limits and human cost unchanged). Use with rp2_mpc_rt.py --skip-late 1 --hsel topk --hsel-k 3 --hsel-every new (goal1/real_prep5/OVERNIGHT_H1.md).
+profile: real_slowc_i3
+date: 2026-11-20
+settings:
+  speed_cap: "on"          # rollout cost on robot sphere speed near the human (t1)
+  speed_cap_v: 0.20        # (real_prep1) m/s, below the hard limit 0.25
+  speed_cap_dist: 10.0     # (real_prep1) m: the speed cost acts everywhere, not only near the human
+  speed_cap_w: 300000.0    # (t1)
+  pose_rot_w: 200.0        # (t1)
+  meff_motion: "cv"        # human shapes moved by segment velocity x (age + rollout time) inside the cost
+  human_vel_alpha: 0.2     # EMA of the segment velocity, per new human message; 0.2 was chosen on synthetic noise, retune on camera data
+  # Tracking loss (ROS path): keep the last human 0.5 s after messages stop, then switch the human cost off until the next message.
+  # This is for the virtual-robot stage only. On the real robot a lost human must stop the robot (or keep it at reduced speed in
+  # a safe state) instead of switching the human cost off.
+  human_loss_hold_s: 0.5
+  human_loss_detect_s: 0.1 # no message for 0.1 s (3 frames at 30 Hz) = lost, logged
+  robot_cfg: "~/effmass_mpc/goal1/fr3v2_1/fr3v2_1_acc10.yml"   # acceleration 10
+  sphere_speed_limit: 0.25  # m/s, hard limit on the commanded step after the solver
+  mppi_iters: 3             # (OVERNIGHT_H1) MPPI iterations per step (particle_mpc.yml 5)

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Fast DDS default profile for the MAIN PC processes that talk to the control PC (the MPC publishes /mpc/joint_trajectory and
+     reads /c6/joint_states). ROS_DOMAIN_ID=42. Copy to goal1/config/fastdds_main_pc.xml (or set FASTDDS_MAIN_PC_XML in hosts.env) and
+     replace MAIN_PC_LINK_ADDRESS (this PC on the wired link to the control PC) and CONTROL_PC_ADDRESS.
+     Used with RMW_IMPLEMENTATION=rmw_fastrtps_cpp. UDP only on the link card and loopback, SHM for same-PC traffic; the control
+     PC is an initial peer (its network side has no multicast receive socket). -->
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+  <transport_descriptors>
+    <transport_descriptor>
+      <transport_id>c6_main_udp</transport_id>
+      <type>UDPv4</type>
+      <interfaceWhiteList>
+        <address>MAIN_PC_LINK_ADDRESS</address>
+        <address>127.0.0.1</address>
+      </interfaceWhiteList>
+    </transport_descriptor>
+    <transport_descriptor>
+      <transport_id>c6_main_shm</transport_id>
+      <type>SHM</type>
+    </transport_descriptor>
+  </transport_descriptors>
+  <participant profile_name="c6_main" is_default_profile="true">
+    <rtps>
+      <useBuiltinTransports>false</useBuiltinTransports>
+      <userTransports>
+        <transport_id>c6_main_shm</transport_id>
+        <transport_id>c6_main_udp</transport_id>
+      </userTransports>
+      <defaultUnicastLocatorList>
+        <locator><udpv4><address>127.0.0.1</address></udpv4></locator>
+        <locator><udpv4><address>MAIN_PC_LINK_ADDRESS</address></udpv4></locator>
+      </defaultUnicastLocatorList>
+      <builtin>
+        <metatrafficUnicastLocatorList>
+          <locator><udpv4><address>127.0.0.1</address></udpv4></locator>
+          <locator><udpv4><address>MAIN_PC_LINK_ADDRESS</address></udpv4></locator>
+        </metatrafficUnicastLocatorList>
+        <initialPeersList>
+          <locator><udpv4><address>127.0.0.1</address></udpv4></locator>
+          <locator><udpv4><address>CONTROL_PC_ADDRESS</address></udpv4></locator>
+        </initialPeersList>
+      </builtin>
+    </rtps>
+  </participant>
+</profiles>

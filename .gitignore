@@ -1,0 +1,17 @@
+# local settings with addresses / commands (copy the *.example files)
+main_pc/goal1/config/hosts.env
+main_pc/goal1/config/h1_choice.env
+main_pc/goal1/config/fastdds_main_pc.xml
+config/hosts.env
+__pycache__/
+*.pyc
+build/
+install/
+log/
+**/*.log
+**/ros_log/
+*.bag
+*.db3
+*.npz
+*.pkl
+_real_results*/
